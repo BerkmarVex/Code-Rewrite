@@ -1,5 +1,5 @@
 #include "main.h"
-#include "buttons.c "
+#include "buttons.h"
 
 void operatorControl() {
 	while (1) {
