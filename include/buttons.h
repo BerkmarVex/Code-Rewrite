@@ -1,5 +1,6 @@
 #ifndef BUTTONS_H
 #define BUTTONS_H
+#include <main.h>
 
 #ifdef __cplusplus
 
@@ -12,23 +13,23 @@ static bool buttonCheck(bool pressed, bool *waspressed) {
     }
 
     else if(pressed){
-        waspressed = true;
+        *waspressed = true;
         return true;
     }
 
-    else{
-        waspressed = false;
+    else {
+        *waspressed = false;
         return false;
     }
 }
 static int *dualZone(int joyRight, int joyLeft, int rangeOneStart, int rangeOneEnd, int rangeTwoStart, int rangeTwoEnd, double scalar) {
     static int vars[2];
 
-    if((abs(joyRight) >= rangeOneStart && abs(joyRight) <= rangeOneEnd)) {
+    if (abs(joyRight) >= rangeOneStart && abs(joyRight) <= rangeOneEnd) {
         vars[0] = joyRight/2;
     }
 
-    if((abs(joyLeft) >= rangeOneStart && abs(joyLeft) <= rangeOneEnd)) {
+    if (abs(joyLeft) >= rangeOneStart && abs(joyLeft) <= rangeOneEnd) {
             vars[1] = joyLeft/2;
     }
 
@@ -39,7 +40,7 @@ static int *dualZone(int joyRight, int joyLeft, int rangeOneStart, int rangeOneE
 
     return vars;
 }
-    
+
 #ifdef __cplusplus
 
 }
