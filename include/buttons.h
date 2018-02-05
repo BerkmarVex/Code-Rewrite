@@ -8,8 +8,8 @@ extern "C" {
 #endif
 
 static bool buttonCheck(bool pressed, bool *waspressed) {
-    if(pressed && waspressed){
-        return false;
+    if(pressed && *waspressed){
+        return true;
     }
 
     else if(pressed){

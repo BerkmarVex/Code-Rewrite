@@ -17,7 +17,6 @@ void update(char input){
 			rightSouth = joystickGetDigital(1,8, JOY_DOWN);
 			buttonCheck(leftWest, &testers1);
 			buttonCheck(rightEast, &testers2);
-			printf("%d\n", testers2);
 			buttonCheck(rightSouth, &testers3);
 			break;
 		case 'B':
@@ -34,16 +33,22 @@ void update(char input){
 
 void buttonOc(){
 	update('A');
-	if (leftWest && rightEast && switchC){
-		switchC = false;
+	if(leftWest && rightEast){
+		if(switchC){
+			switchC = false;
+		}
+
+		else{
+			switchC = buttonCheck(rightEast, &testers2);
+		}
+
 	}
-		else if (leftWest && rightEast && !switchC){
-			switchC = true;
-		}
-		else if (leftWest && rightSouth){
-			//Switch to Reverse
-		}
+
+	else{
+		//switchC = false;
+	}
 }
+
 void tank(){
 	update('B');
  	motorSet(2, *tankDriveValues[0]);
@@ -55,10 +60,10 @@ void operatorControl() {
 		buttonOc();
 		tank();
 		if(switchC){
-			//printf("Hello\n");
+			printf("Hello\n");
 		}
 			else {
-			//printf("BLAHH\n");
+				printf("BLAHH\n");
 			}
 		delay(20);
 	}
