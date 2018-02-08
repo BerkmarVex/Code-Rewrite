@@ -6,39 +6,17 @@
 
 extern "C" {
 #endif
-
-static bool buttonCheck(bool pressed, bool *waspressed) {
-    if(pressed && *waspressed){
-        return true;
-    }
-
-    else if(pressed){
-        *waspressed = true;
-        return true;
-    }
-
-    else {
-        *waspressed = false;
-        return false;
-    }
-}
-static int *dualZone(int joyRight, int joyLeft, int rangeOneStart, int rangeOneEnd, int rangeTwoStart, int rangeTwoEnd, double scalar) {
-    static int vars[2];
-
-    if (abs(joyRight) >= rangeOneStart && abs(joyRight) <= rangeOneEnd) {
-        vars[0] = joyRight/2;
-    }
-
-    if (abs(joyLeft) >= rangeOneStart && abs(joyLeft) <= rangeOneEnd) {
-            vars[1] = joyLeft/2;
-    }
-
-    else{
-        vars[0] = joyRight;
-        vars[1] = joyLeft;
-    }
-
-    return vars;
+int n = 0;
+bool toggle;
+static bool buttonCheck(bool press) {
+  if(press && n == 0){
+    n = 1;
+    toggle = !toggle;
+  }
+  else if(!press){
+    n = 0;
+  }
+  return toggle;
 }
 
 #ifdef __cplusplus

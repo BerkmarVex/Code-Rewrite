@@ -12,8 +12,15 @@ extern "C" {
   void initialize();
   void operatorControl();
 
-  #ifdef __cplusplus
+  static const int LEFTMOTOR  = 1;
+  static const int RIGHTMOTOR = 10;
+
+
+#ifdef __cplusplus
+
+
 }
+
 #endif
 
 #endif
