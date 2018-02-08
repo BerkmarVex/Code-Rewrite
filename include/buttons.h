@@ -7,16 +7,15 @@
 extern "C" {
 #endif
 int n = 0;
-bool toggle;
-static bool buttonCheck(bool press) {
+static bool buttonCheck(bool press, bool *toggle) {
   if(press && n == 0){
     n = 1;
-    toggle = !toggle;
+    *toggle = !*toggle;
   }
   else if(!press){
     n = 0;
   }
-  return toggle;
+  return *toggle;
 }
 
 #ifdef __cplusplus
