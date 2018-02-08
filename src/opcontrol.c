@@ -2,8 +2,7 @@
 #include "buttons.h"
 #include "dualzone.h"
 
-bool switchC = true;
-bool toggleS;
+bool toggleS = true;
 bool leftWest, rightEast, rightSouth;
 int leftJoyX, leftJoyY, rightJoyX, rightJoyY;
 
@@ -34,6 +33,9 @@ void update(char input){
 
 void buttonOc(){
 	update('A');
+		if (leftWest){
+			toggleS = buttonCheck(rightEast);
+		}
 		if(toggleS){
 			tank();
 		}
